@@ -1,0 +1,50 @@
+.icon{
+	height: 30px;
+}
+
+.full-h{
+	height: 100%;
+	min-height: 900px !important;
+	max-height: 900px !important;
+}
+
+.full-w{
+	width: 100%;
+}
+
+#profileImg{
+	height: 70px;
+}
+
+#nameTitle{
+	margin-top: 0px;
+	margin-left: 10px;
+	padding-top: 10px;
+}
+
+.headerAcc{
+	cursor: pointer;
+	color: white;
+	padding-left: 10px;
+}
+
+#content li{
+	list-style: square;
+	margin-left: 20px;
+}
+
+.my-badge{
+	background-color: #2188f3;
+	color: white;
+	padding: 2px;
+}
+
+#nameHeader{
+	width: 80%;
+	float:left;
+}
+
+#imgHeader{
+	width: 20%;
+	float:left;
+}

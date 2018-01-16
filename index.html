@@ -6,11 +6,114 @@
   		<meta name="description" content="Curriculum Vitae de Carlos López Martínez">
 		<title>Carlos López Martínez</title>
 		<!-- Compiled and minified CSS and JS of Materialize -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-		<!-- -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+		<!-- Material Icons-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Own CSS-->
+		<link rel="stylesheet" href="styles.css" type="text/css"/>
+		<!--JQuery CDN-->
+		<script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
+		<script  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="  crossorigin="anonymous"></script>
+		<!--JS-->
+		<script>
+			$(document).ready(function(){
+			    $( "#content" ).accordion({
+			      heightStyle: "content"
+			    });
+			});
+		</script>
 	</head>
 	<body>
-		<h3 id="nameTitle">Carlos López Martínez</h3>
+		<div class="row z-depth-4 red lighten-1" id="titleHeader">
+				<div id="nameHeader">
+					<h4 class="header" id="nameTitle">Carlos López Martínez</h4>
+				</div>
+				<div id="imgHeader">
+					<img src="img/profile.jpg">
+				</div>
+		</div>
+		<div class="row">
+			<div class="full-h col s2 left-align z-depth-4 blue lighten-1 hoverable" id="leftMenu">
+				<h5 class="center">Datos Personales</h5>
+				<hr></hr>
+				<ul>
+					<li><strong><h7>Fecha de Nacimiento</h7></strong></li>
+					<li><span class="my-badge">25/02/1995</span></li>
+					<li><strong><h7>E-mail</h7></strong></li>
+					<li><span class="my-badge">carlomaroficial@gmail.com</span></li>
+					<li><strong><h7>Móvil</h7></strong></li>
+					<li><span class="my-badge">655887216</span></li>
+					<li><strong><h7>Fijo</h7></strong></li>
+					<li><span class="my-badge">917259246</span></li>
+					<li><a href="https://github.com/CharlieGnomo" target="_blank"><img src="https://image.flaticon.com/icons/png/512/25/25231.png" class="icon"/><h7 class="black-text">Github</h7></a></li>
+					<li><a href="#"><img src="http://www.freepngimg.com/download/linkedin/5-2-linkedin-picture.png" class="icon"/><h7 class="black-text">Linkedin</h7></a></li>
+				</ul>
+			</div>
+			<div class="col full-h s10 z-depth-4 green lighten-1" id="content">
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Resumen Profesional</h3>
+			    <div>
+			    	<ul>
+				      	<li><p>Estudiante del Grado en Ingeniería Informática por la UCM.</p></li>
+						<li><p>Conocimiento en desarrollo web basado en HTML5, Javascript, JQuery, PHP, Bootstrap y CSS3.</p></li>
+						<li><p>Desarrollo web basado en Java (JPA, JSP).</p></li>
+						<li><p>Experiencia en Drupal como plataforma web, demostrada mediante el traspaso de la plataforma estática anterior hacia el actual CMS Drupal, además de por la actual experiencia laboral.</p></li>
+						<li><p>Amplio conocimiento, obtenido en la universidad, de lenguajes como Java y C++.</p></li>
+						<li><p>Gestión de bases de datos con SQL y XML.</p></li>
+						<li><p>Diversos conocimientos sobre Python como desarrollo de aplicaciones web con Bottle, gestión de bases de datos con MongoDB o SQLite3 y su capa intermedia MongoEngine, web scraping apoyado en BeautifulSoup, autenticación TOTP y autenticación delegada en Google.</p></li>
+						<li><p>Conocimiento en desarrollo de apps Android (Android nativo).</p></li>
+						<li><p>Trato con entornos de desarrollo IDE como Eclipse y su versión STS (Spring Tool Suite), Netbeans o Visual Studio. Y otros editores como Notepad++ y Sublime Text 3.</p></li>
+						<li><p>Durante la universidad he desarrollado proyectos tanto individuales como en grupo, teniendo iniciativa y creatividad en el desarrollo de estos.</p></li>
+					<ul>
+			    </div>
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Experiencia Laboral</h3>
+			    <div>
+			    	<ul>
+		      			<li><p>2013 - actualidad - Encargado de la web de una <strong><a class="black-text" href="http://www.coralalmayrit.com" target="_blank">asociación coral</a></strong> en Madrid.</p></li>
+		      		</ul>
+			    </div>
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Educación</h3>
+			    <div>
+			    	<ul>
+				        <li><p>2013 - actualidad - Estudiante de Ingeniería Informática en la UCM.</p></li>
+						<li><p>2012 - Título de Bachillerato (rama de Ciencias).</p></li>
+						<li><p>2011 - Grado elemental de Solfeo y Piano.</p></li>
+					</ul>
+			    </div>
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Cursos</h3>
+			    <div>
+			    	<ul>
+			      		<li><p>2017 - Curso de desarrollo de Apps Móviles de ACTIVATE (Google y UCM) en metodología online.</p></li>
+						<li><p>2013 - Curso de Diseño y Desarrollo Web Adaptativo en HTML 5 y CSS3 en CICE (Escuela de formación en Nuevas Tecnologías de la Información).</p></li>
+					</ul>
+			    </div>
+
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Idiomas</h3>
+			    <div>
+			    	<ul>
+			      		<li><p>Castellano - Nativo.</p></li>
+						<li><p>Inglés - Actualmente cursando B1.2</p></li>
+						<li><p>Francés - Nivel Básico.</p></li>
+					</ul>
+			    </div>
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Capacidades</h3>
+			    <div>
+			    	<ul>
+						<li><p>Dispuesto a aprender y enseñar cosas nuevas cada día y si con ello puedo ayudar a otros mejor.</p></li>
+						<li><p>Creativo.</p></li>
+						<li><p>Poner pausa en momentos críticos.</p></li>
+					</ul>
+			    </div>
+			    <h4 class="headerAcc z-depth-3 green darken-3"> Otros</h3>
+			    <div>
+			    	<ul>
+			      		<li><p>Integrante de la Coral Almayrit.</p></li>
+						<li><p>Vicepresidente(2017-act.) y vocal(2017-2017) en la Agrupación Coral José de Calasanz.</p></li>
+						<li><p>Participante en el Concurso de Logotipo de la "Associació de Comerciants de Roquetes" (Nou Barris - Barcelona).</p></li>
+						<li><p>Principales aficiones: Jugador de fútbol esporádico, canto, piano, dibujo, cocina.</p></li>
+					</ul>
+			    </div>
+			</div>
+		</div>
 	</body>
 </html>
