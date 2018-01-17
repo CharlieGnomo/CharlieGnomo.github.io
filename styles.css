@@ -17,15 +17,18 @@
 }
 
 #nameTitle{
-	margin-top: 0px;
-	margin-left: 10px;
-	padding-top: 10px;
+	    margin-top: 0px;
+    margin-left: 10px;
+    padding-top: 10px;
+    -webkit-text-fill-color: #862f2f;
+    -webkit-text-stroke: 1px #F44336;
+    font-weight: bold;
 }
 
 .headerAcc{
 	cursor: pointer;
 	color: white;
-	padding-left: 10px;
+	padding: 5px 0px 5px 10px;
 }
 
 #content li{
@@ -48,3 +51,5 @@
 	width: 20%;
 	float:left;
 }
+
+.ui-state-focus { outline: none; }
