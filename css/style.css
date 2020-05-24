@@ -1,0 +1,328 @@
+/*FONTS*/
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/*STYLES*/
+*,
+*::after,
+*::before,
+html,
+body {
+    box-sizing: border-box;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+hr {
+    height: 2px;
+    background: -moz-radial-gradient(circle, rgba(6, 185, 213, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(6, 185, 213, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: radial-gradient(circle, rgba(6, 185, 213, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+em,
+.emphasys {
+    color: #046077;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.header {
+    background-image: url('../assets/background.jpg');
+    background-origin: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    position: relative;
+}
+
+.header .toolbar {
+    position: absolute;
+    bottom: -75px;
+    left: 5px;
+}
+
+.header .toolbar .toolbar-item img {
+    width: 30px;
+    height: 30px;
+    margin: 0px 10px;
+}
+
+.header .languages {
+    width: 20%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.header .languages .flag {
+    width: 30px;
+    height: 26px;
+    margin: 5px;
+    float: right;
+    cursor: pointer;
+}
+
+.header .name {
+    width: 100%;
+}
+
+.header .name h1 {
+    font-family: 'Amatic SC', cursive;
+    color: white;
+    font-weight: 100;
+    width: 100%;
+    padding: 15px;
+    font-size: 5rem;
+    text-align: center;
+}
+
+.header .profile {
+    background-image: url('../assets/profile.jpg');
+    background-origin: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    bottom: -75px;
+    display: block;
+    left: calc(50% - 75px);
+}
+
+.header .resume {
+    display: inline;
+    position: absolute;
+    bottom: -75px;
+    right: 1rem;
+    fill: #0585a2;
+    cursor: pointer;
+}
+
+.header .resume a {
+    color: #0585a2;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.header .resume:hover a {
+    color: black;
+    fill: black;
+    font-size: 1.2rem;
+}
+
+.header .resume:hover a svg.resume-icon {
+    color: black;
+    fill: black;
+    width: 35px;
+    height: 35px;
+}
+
+.header .resume a svg.resume-icon {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.content {
+    margin-top: 100px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.content .container {
+    width: 80%;
+    margin: auto;
+}
+
+.content .container .main {
+    width: 100%;
+    display: block;
+}
+
+.content .container .section {
+    margin-bottom: 50px;
+}
+
+.content .container .section .section-title {
+    width: 100%;
+    color: #046077;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+
+.content .container .section .section-content {
+    width: 100%;
+    padding: 0px 25px;
+    margin: 30px 0px;
+}
+
+.content .container .section .section-content .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.content .container .section .section-content .grid .grid-cell {
+    margin-bottom: 25px;
+}
+
+.content .container .section .section-content .grid .grid-cell .skill-title {
+    width: fit-content;
+    border-bottom: 2px solid;
+}
+
+.content .container .section .section-content .flow {
+    width: 100%;
+    padding: 25px 60px;
+    max-width: 1000px;
+    margin: auto;
+    display: block;
+}
+
+.content .container .section .section-content .ranking {
+    list-style: none;
+    width: 100%;
+}
+
+.content .container .section .section-content .ranking .rating {
+    margin: 10px 0px;
+    font-weight: bold;
+}
+
+.content .container .section .section-content .ranking .skill {
+    display: block;
+}
+
+.content .container .section .section-content .ranking .rating .flag {
+    width: 40px;
+    height: 36px;
+    vertical-align: middle;
+}
+
+.content .container .section .section-content .ranking .rating .dot {
+    height: 25px;
+    width: 25px;
+    vertical-align: middle;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px 10px;
+    border: 2px solid #0585a2;
+}
+
+.content .container .section .section-content .ranking .rating .dot.full {
+    background-color: #06b9d5;
+}
+
+.content .container .section .section-content .ranking .rating .dot.half {
+    background: -moz-linear-gradient(90deg, rgba(6, 185, 213, 1) 50%, transparent 50%);
+    background: -webkit-linear-gradient(90deg, rgba(6, 185, 213, 1) 50%, transparent 50%);
+    background: linear-gradient(90deg, rgba(6, 185, 213, 1) 50%, transparent 50%);
+}
+
+.content .container .section .section-content .ranking .rating .dot.empty {
+    background-color: transparent;
+}
+
+.content .container .section .section-content .certificate,
+.content .container .section .section-content .contact {
+    font-weight: bold;
+}
+
+.content .container .section .section-content .certificate,
+.content .container .section .section-content .hobbie,
+.content .container .section .section-content .contact {
+    display: flex;
+    align-items: center;
+    margin: 5px 0px;
+}
+
+.content .container .section .section-content .contact .contact-icon {
+    width: 70px;
+    height: 57px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+.content .container .section .section-content .certificate .certificate-icon,
+.content .container .section .section-content .hobbie .hobbie-icon {
+    width: 70px;
+    height: 57px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+.content .container .section .section-content .section-project {
+    margin: 25px 0px;
+    overflow: hidden;
+}
+
+.content .container .section .section-content .section-project .tags {
+    margin: 5px 0px;
+}
+
+.content .container .section .section-content .section-project .tags .badge {
+    margin: 0px 6px;
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: #046077;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.content .container .section .section-content .section-project .section-project-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.content .container .section .section-content .section-project a.section-project-appendix {
+    display: table-row-group;
+}
+
+.content .container .section .section-content .section-project .collaborators {
+    color: #046077;
+    font-size: 0.7rem;
+}
+
+.content .container .section .section-content .section-project .gallery {
+    overflow: hidden;
+    margin: 20px 0px;
+}
+
+.content .container .section .section-content .section-project .gallery .screenshot {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 95px;
+    float: left;
+    margin: 5px 10px;
+}
+
+.content .container .section .section-content .section-project .gallery .screenshot:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    background-color: #042c33;
+    height: 70px;
+    color: white;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+}
