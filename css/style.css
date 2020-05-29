@@ -42,7 +42,7 @@ em,
 .header .toolbar {
     position: absolute;
     bottom: -75px;
-    left: 5px;
+    left: 1rem;
 }
 
 .header .toolbar .toolbar-item img {
@@ -147,6 +147,11 @@ em,
 .content .container .main {
     width: 100%;
     display: block;
+}
+
+.content .container .menu {
+    width: 100%;
+    display: none;
 }
 
 .content .container .section {
@@ -283,6 +288,7 @@ em,
     font-size: 0.8rem;
 }
 
+
 .content .container .section .section-content .section-project .section-project-title {
     font-family: 'Amatic SC', cursive;
     font-size: 1.6rem;
@@ -324,5 +330,483 @@ em,
     height: 70px;
     color: white;
     font-family: 'Amatic SC', cursive;
-    font-weight: bold;
+    font-size: 1.2rem;
+    padding-top: 10px;
+}
+
+@media (min-width:320px) {
+    /* smartphones, iPhone, portrait 480x320 phones */
+
+    .header .name h1 {
+        font-size: 2.2rem;
+    }
+
+    .header .toolbar,
+    .header .resume {
+        display: none;
+    }
+
+    .content .container .section .section-title {
+        font-size: 2rem;
+    }
+
+    .content .container .section .section-content .certificate {
+        font-weight: 0.8rem;
+        margin: 5px 0px;
+    }
+
+    .content .container .section .section-content .certificate .certificate-icon,
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 30px;
+    }
+
+    .content .container .section .section-content .section-project .tags .badge {
+        padding: 2px 3px;
+        font-size: 0.6rem;
+    }
+
+    .content .container .menu {
+        display: block;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .content .container .menu .toolbar-item img,
+    .content .container .menu .toolbar-item svg {
+        width: 30px;
+        height: 30px;
+        margin: 0px 5px;
+        fill: #046077;
+    }
+
+    .content .container .section .section-content .section-project .gallery .screenshot {
+        margin: 3px;
+    }
+
+
+    .content .container .section .section-content .flow {
+        padding: 0px;
+    }
+
+    .content .container .section .section-content {
+        padding: 0px;
+    }
+
+    .content .container .section .section-content .section-project .gallery .screenshot {
+        margin: 3px;
+        width: 45%;
+    }
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: 100%;
+    }
+
+    .content .container .section .section-content .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .content .container .section .section-content .ranking .rating .dot {
+        height: 20px;
+        width: 20px;
+        margin: 0px 5px;
+    }
+
+    .content .container .section .section-content .contact .contact-icon {
+        width: 30px;
+    }
+
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 30px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin: 3px 10px 3px 0px;
+        min-width: 30px;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width:641px) {
+
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    .header .toolbar .toolbar-item img {
+        width: 20px;
+        height: 20px;
+        margin: 0px 7px;
+    }
+
+    .header .toolbar,
+    .header .resume {
+        display: block;
+    }
+
+    .content .container .section .section-content .certificate .certificate-icon,
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 70px;
+        height: 57px;
+    }
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: fit-content;
+    }
+
+    .content .container .menu {
+        width: 100%;
+        display: none;
+    }
+
+    .content .container .section .section-content .section-project .tags .badge {
+        margin: 0px 6px;
+        padding: 2px 6px;
+        font-size: 0.8rem;
+    }
+
+    .content .container .section .section-content .flow {
+        padding: 0px;
+    }
+
+    .content .container .section .section-content .section-project .gallery .screenshot {
+        width: 150px;
+        height: 95px;
+        margin: 3px;
+    }
+
+    .content .container .section .section-content .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content .container .section .section-content .ranking .rating .dot {
+        height: 20px;
+        width: 20px;
+        margin: 0px 5px;
+    }
+
+    .content .container .section .section-content .contact .contact-icon {
+        width: 35px;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        vertical-align: middle;
+        margin-right: 10px;
+        margin: 5px 10px 5px 0px;
+        min-width: 30px;
+    }
+}
+
+@media (min-width:570px) {
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+
+    .header .name h1 {
+        font-size: 3rem;
+    }
+
+    .header .toolbar,
+    .header .resume {
+        display: block;
+    }
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: fit-content;
+    }
+
+    .content .container .menu {
+        width: 100%;
+        display: none;
+    }
+
+    .content .container .section .section-content .certificate .certificate-icon,
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 70px;
+        height: 57px;
+    }
+
+    .content .container .section .section-content .section-project .tags .badge {
+        margin: 0px 6px;
+        padding: 2px 6px;
+        font-size: 0.8rem;
+    }
+
+    .header .toolbar .toolbar-item img {
+        width: 20px;
+        height: 20px;
+        margin: 0px 7px;
+    }
+
+    .content .container .section .section-content .flow {
+        padding: 0px;
+    }
+
+    .content .container .section .section-content {
+        padding: 0px;
+    }
+
+    .content .container .section .section-content .section-project .gallery .screenshot {
+    width: 150px;
+    height: 95px;
+    margin: 3px;
+}
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: 100%;
+    }
+
+    .content .container .section .section-content .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .content .container .section .section-content .ranking .rating .dot {
+        height: 30px;
+        width: 30px;
+        margin: 0px 7px;
+    }
+
+    .content .container .section .section-content .contact .contact-icon {
+        width: 35px;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 35px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin: 5px 10px 5px 0px;
+        min-width: 35px;
+    }
+}
+
+@media (min-width:641px) {
+
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    .header .toolbar .toolbar-item img {
+        width: 20px;
+        height: 20px;
+        margin: 0px 7px;
+    }
+
+    .header .toolbar,
+    .header .resume {
+        display: block;
+    }
+
+    .content .container .section .section-content .section-project .tags .badge {
+        margin: 0px 6px;
+        padding: 2px 6px;
+        font-size: 0.8rem;
+    }
+
+    .content .container .section .section-content .certificate .certificate-icon,
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 70px;
+        height: 57px;
+    }
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: fit-content;
+    }
+
+    .content .container .menu {
+        width: 100%;
+        display: none;
+    }
+
+    .content .container .section .section-content .flow {
+        padding: 0px;
+    }
+
+    .content .container .section .section-content .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content .container .section .section-content .ranking .rating .dot {
+        height: 20px;
+        width: 20px;
+        margin: 0px 5px;
+    }
+
+    .content .container .section .section-content .contact .contact-icon {
+        width: 35px;
+    }
+
+    .content .container .section .section-content .section-project .gallery .screenshot {
+        width: 150px;
+        height: 95px;
+        margin: 5px 10px;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 35px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin: 5px 10px 5px 0px;
+        min-width: 35px;
+    }
+}
+
+@media (min-width:961px) {
+
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .header .toolbar .toolbar-item img {
+        width: 30px;
+        height: 30px;
+        margin: 0px 7px;
+    }
+
+    .header .toolbar,
+    .header .resume {
+        display: block;
+    }
+
+    .content .container .section .section-content .section-project .tags .badge {
+        margin: 0px 6px;
+        padding: 2px 6px;
+        font-size: 0.8rem;
+    }
+
+    .content .container .section .section-content .certificate .certificate-icon,
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 70px;
+        height: 57px;
+    }
+
+    .header .resume a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: fit-content;
+    }
+
+    .content .container .menu {
+        width: 100%;
+        display: none;
+    }
+
+    .content .container .section .section-content .flow {
+        padding: 5px;
+    }
+
+    .content .container .section .section-content .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .content .container .section .section-content .ranking .rating .dot {
+        height: 25px;
+        width: 25px;
+        margin: 0px 5px;
+    }
+
+    .content .container .section .section-content .section-project .gallery .screenshot {
+        width: 150px;
+        height: 95px;
+        margin: 5px 10px;
+    }
+
+    .content .container .section .section-content .contact .contact-icon {
+        width: 35px;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 45px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin: 5px 10px 5px 0px;
+        min-width: 45px;
+    }
+}
+
+@media (min-width:1281px) {
+
+    /* hi-res laptops and desktops */
+    .header .toolbar .toolbar-item img {
+        width: 35px;
+        height: 35px;
+        margin: 0px 7px;
+    }
+
+    .header .toolbar,
+    .header .resume {
+        display: block;
+    }
+
+    .content .container .section .section-content .section-project .tags .badge {
+        margin: 0px 6px;
+        padding: 2px 6px;
+        font-size: 0.8rem;
+    }
+
+    .content .container .section .section-content .certificate .certificate-icon,
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 70px;
+        height: 57px;
+    }
+
+    .content .container .section .section-content .grid .grid-cell .skill-title {
+        width: fit-content;
+    }
+
+    .content .container .menu {
+        width: 100%;
+        display: none;
+    }
+
+    .header .resume a {
+        font-size: 1.5rem;
+    }
+
+    .content .container .section .section-content .flow {
+        padding: 25px 60px;
+    }
+
+    .content .container .section .section-content .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .content .container .section .section-content .ranking .rating .dot {
+        height: 30px;
+        width: 30px;
+        margin: 0px 7px;
+    }
+
+    .content .container .section .section-content .contact .contact-icon {
+        width: 40px;
+    }
+
+    .content .container .section .section-content .contact a {
+        font-size: 1.2rem;
+    }
+
+    .content .container .section .section-content .hobbie .hobbie-icon {
+        width: 45px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin: 5px 10px 5px 0px;
+        min-width: 45px;
+    }
 }
