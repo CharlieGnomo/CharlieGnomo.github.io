@@ -1,0 +1,65 @@
+{
+    "short_name": "CV",
+    "name": "Carlos López Martínez CV",
+    "icons": [{
+        "src": "/assets/logo.png",
+        "type": "image/png",
+        "sizes": "192x192"
+    }],
+    "start_url": "/",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#046077",
+    "shortcuts": [
+        {
+            "name": "¿Quién soy?",
+            "short_name": "Resumen",
+            "description": "Vista de resumen",
+            "url": "/#resume"
+        },
+        {
+            "name": "¿Cómo he llegado hasta aquí?",
+            "short_name": "Historia laboral/educativa",
+            "description": "Vista de historia",
+            "url": "/#work"
+        },
+        {
+            "name": "¿Qué habilidades tengo?",
+            "short_name": "Habilidades",
+            "description": "Vista de habilidades",
+            "url": "/#skills"
+        },
+        {
+            "name": "¿Qué cursos he hecho?",
+            "short_name": "Cursos",
+            "description": "Vista de cursos realizados",
+            "url": "/#courses"
+        },
+        {
+            "name": "¿Qué idiomas entiendo?",
+            "short_name": "Idiomas",
+            "description": "Vista de idiomas",
+            "url": "/#languages"
+        },
+        {
+            "name": "¿Qué proyectos he realizado?",
+            "short_name": "Proyectos",
+            "description": "Vista de proyectos realizados",
+            "url": "/#projects"
+        },
+        {
+            "name": "¿Quieres conocerme más?",
+            "short_name": "Otros",
+            "description": "Vista de otras particularidades",
+            "url": "/#other"
+        },
+        {
+            "name": "¿Cómo puedes contactar conmigo?",
+            "short_name": "Contacto",
+            "description": "Vista de contacto",
+            "url": "/#contact"
+        }
+    ],
+    "description": "Web que contiene el cv de Carlos López Martínez"
+}
