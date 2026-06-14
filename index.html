@@ -1,768 +1,799 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Web para el curriculum vitae de Carlos López Martínez">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Carlos López Martínez">
-    <meta name="theme-color" content="#046077"/>
-    <link rel="manifest" href="manifest.json">
-    <title>Carlos López Martínez</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="./assets/logo.png">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168057656-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos López Martínez</title>
+<meta name="description" content="Arquitecto de Datos especializado en Azure, Databricks y plataformas de datos modernas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --night:   #0A0F1E;
+  --deep:    #111827;
+  --panel:   #1A2236;
+  --border:  #263348;
+  --blue:    #4F8EF7;
+  --lavender:#A5B4FC;
+  --ice:     #E8F0FE;
+  --fog:     #F1F5F9;
+  --mist:    #CBD5E1;
+  --body:    #334155;
+  --dim:     #64748B;
+  --white:   #FFFFFF;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--fog); color: var(--body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
-        gtag('config', 'UA-168057656-1');
-    </script>
+/* ── Lang switcher ─────────────────────────────────── */
+.lang-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  background: var(--night);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+.lang-btn {
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--mist);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.lang-btn.active {
+  background: var(--blue);
+  color: var(--white);
+}
+.lang-btn:not(.active):hover { color: var(--white); }
+
+/* ── Layout ────────────────────────────────────────── */
+.layout { display: grid; grid-template-columns: 320px 1fr; min-height: 100vh; max-width: 1440px; margin: 0 auto; }
+
+/* ── Sidebar ───────────────────────────────────────── */
+.sidebar { background: var(--night); color: var(--white); position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 40px 28px; display: flex; flex-direction: column; gap: 32px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--blue) 0%, var(--lavender) 100%); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--white); flex-shrink: 0; box-shadow: 0 0 0 3px rgba(79,142,247,0.25); }
+.sidebar-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--white); line-height: 1.2; letter-spacing: -0.3px; }
+.sidebar-title { font-size: 0.78rem; font-weight: 500; color: var(--lavender); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+.sidebar-location { font-size: 0.82rem; color: var(--mist); margin-top: 6px; }
+.s-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 500; color: var(--blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.s-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.contact-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.contact-list li { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--mist); }
+.contact-list a { color: var(--ice); text-decoration: none; font-weight: 500; transition: color .2s; }
+.contact-list a:hover { color: var(--blue); }
+.c-icon { width: 28px; height: 28px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+.chip-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip { padding: 5px 10px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; font-size: 0.74rem; color: var(--ice); font-family: 'JetBrains Mono', monospace; }
+.cert-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.cert-list li { font-size: 0.79rem; color: var(--mist); padding-left: 16px; position: relative; line-height: 1.45; }
+.cert-list li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-size: 0.7rem; top: 2px; }
+.lang-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.lang-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+.lang-name { color: var(--white); font-weight: 500; }
+.lang-level { font-size: 0.7rem; color: var(--blue); background: rgba(79,142,247,0.12); border: 1px solid rgba(79,142,247,0.25); padding: 2px 8px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+/* ── Main ──────────────────────────────────────────── */
+.main { padding: 56px 48px; background: var(--fog); }
+.section { margin-bottom: 64px; }
+.section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.section-num { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--blue); font-weight: 500; letter-spacing: 1px; width: 28px; text-align: right; flex-shrink: 0; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.55rem; font-weight: 700; color: var(--deep); letter-spacing: -0.5px; }
+.section-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
+
+/* Hero */
+.hero-card { background: var(--night); border-radius: var(--radius-lg); padding: 36px 40px; color: var(--white); position: relative; overflow: hidden; }
+.hero-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(79,142,247,0.15) 0%, transparent 70%); pointer-events: none; }
+.hero-card::after { content: ''; position: absolute; bottom: -40px; left: 40%; width: 180px; height: 180px; background: radial-gradient(circle, rgba(165,180,252,0.08) 0%, transparent 70%); pointer-events: none; }
+.hero-headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -1px; color: var(--white); margin-bottom: 6px; }
+.hero-headline em { font-style: normal; color: var(--lavender); }
+.hero-sub { font-size: 0.82rem; color: var(--mist); margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px; }
+.hero-body { font-size: 0.95rem; color: rgba(255,255,255,0.75); max-width: 640px; line-height: 1.75; }
+.hero-body p + p { margin-top: 12px; }
+
+/* Metrics */
+.metrics-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 64px; }
+.metric { background: var(--white); border: 1px solid #E2E8F0; border-radius: var(--radius-md); padding: 20px 16px; text-align: center; box-shadow: 0 2px 8px rgba(15,23,42,.04); transition: transform .2s, box-shadow .2s; }
+.metric:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,23,42,.08); }
+.metric-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--deep); line-height: 1; margin-bottom: 6px; }
+.metric-accent { color: var(--blue); }
+.metric-label { font-size: 0.72rem; color: var(--dim); line-height: 1.35; font-weight: 500; }
+
+/* Timeline */
+.timeline { position: relative; display: flex; flex-direction: column; }
+.timeline::before { content: ''; position: absolute; left: 108px; top: 24px; bottom: 24px; width: 1px; background: linear-gradient(to bottom, var(--blue), var(--border), transparent); }
+.tl-item { display: grid; grid-template-columns: 108px 1fr; gap: 0 24px; position: relative; padding-bottom: 32px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-left { text-align: right; padding-top: 20px; padding-right: 24px; }
+.tl-year { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; color: var(--blue); line-height: 1.3; }
+.tl-company { font-size: 0.7rem; color: var(--dim); margin-top: 3px; }
+.tl-dot { position: absolute; left: 104px; top: 24px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); border: 2px solid var(--fog); box-shadow: 0 0 0 3px rgba(79,142,247,0.2); z-index: 1; }
+.tl-card { background: var(--white); border: 1px solid #E2E8F0; border-radius: var(--radius-md); padding: 24px 28px; box-shadow: 0 2px 8px rgba(15,23,42,.04); }
+.tl-role { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--deep); margin-bottom: 4px; }
+.tl-meta { font-size: 0.76rem; color: var(--dim); margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; }
+.tl-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.tl-list li { font-size: 0.85rem; color: var(--body); padding-left: 16px; position: relative; line-height: 1.5; }
+.tl-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-size: 0.75rem; }
+.tl-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; padding: 3px 9px; background: var(--fog); border: 1px solid #DDE3EE; border-radius: 5px; color: var(--body); }
+.tag-blue { background: rgba(79,142,247,0.08); border-color: rgba(79,142,247,0.25); color: #2563EB; }
+
+/* Domain grid */
+.domain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.domain-card { background: var(--white); border: 1px solid #E2E8F0; border-radius: var(--radius-md); padding: 24px; box-shadow: 0 2px 8px rgba(15,23,42,.03); transition: border-color .2s, box-shadow .2s; }
+.domain-card:hover { border-color: rgba(79,142,247,0.35); box-shadow: 0 4px 20px rgba(79,142,247,.08); }
+.domain-icon { font-size: 1.4rem; margin-bottom: 10px; }
+.domain-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--deep); margin-bottom: 8px; }
+.domain-desc { font-size: 0.8rem; color: var(--dim); line-height: 1.55; }
+
+/* Tech table */
+.tech-table { background: var(--white); border: 1px solid #E2E8F0; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 2px 8px rgba(15,23,42,.04); }
+.tech-row { display: grid; grid-template-columns: 160px 1fr; border-bottom: 1px solid #F1F5F9; }
+.tech-row:last-child { border-bottom: none; }
+.tech-cat { padding: 16px 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 500; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; border-right: 1px solid #F1F5F9; background: #FAFBFD; display: flex; align-items: center; }
+.tech-items { padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+
+/* Leadership card */
+.lead-card { background: var(--white); border: 1px solid #E2E8F0; border-radius: var(--radius-md); padding: 36px 40px; box-shadow: 0 2px 8px rgba(15,23,42,.04); display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: center; }
+.lead-quote { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; color: var(--deep); line-height: 1.55; letter-spacing: -0.2px; margin-bottom: 16px; }
+.lead-body { font-size: 0.88rem; color: var(--dim); line-height: 1.7; }
+.lead-pillars { display: flex; flex-direction: column; gap: 10px; }
+.pillar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--fog); border-radius: var(--radius-sm); border: 1px solid #E8EDF5; }
+.pillar-icon { font-size: 1rem; }
+.pillar-text { font-size: 0.8rem; font-weight: 600; color: var(--deep); }
+
+/* Cert grid */
+.cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cert-card { background: var(--white); border: 1px solid #E2E8F0; border-radius: var(--radius-md); padding: 24px 28px; box-shadow: 0 2px 8px rgba(15,23,42,.03); }
+.cert-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--deep); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.cert-list-main { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.cert-list-main li { font-size: 0.83rem; color: var(--body); padding-left: 20px; position: relative; line-height: 1.45; }
+.cert-list-main li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); opacity: 0.6; }
+
+/* Footer */
+.footer-stripe { background: var(--deep); color: var(--mist); text-align: center; padding: 20px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px; }
+
+/* Reveal animation */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; padding: 32px 24px; }
+  .main { padding: 32px 24px; }
+  .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+  .domain-grid { grid-template-columns: 1fr 1fr; }
+  .lead-card { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .domain-grid { grid-template-columns: 1fr; }
+  .tech-row { grid-template-columns: 1fr; }
+  .tech-cat { border-right: none; border-bottom: 1px solid #F1F5F9; }
+  .timeline::before { left: 0; }
+  .tl-item { grid-template-columns: 1fr; }
+  .tl-left { text-align: left; padding: 0 0 8px 20px; }
+  .tl-dot { left: -4px; }
+  .hero-headline { font-size: 1.8rem; }
+  .lang-switcher { top: 12px; right: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
 </head>
-
 <body>
-    <div class="header">
-        <!-- <div class="languages">
-            <img class="uk flag" src="./assets/321269.svg">
-            <img class="spanish flag" src="./assets/321260.svg">
-        </div> -->
-        <div class="toolbar">
-            <a class="toolbar-item" href="mailto:carlomaroficial@gmail.com">
-                <img alt="icono email" class="contact-icon" src="./assets/email.svg"></a>
-            <a class="toolbar-item" href="tel:+34655887216">
-                <img alt="icono telefono" class="contact-icon" src="./assets/phone.svg"></a>
-            <a class="toolbar-item" href="https://www.linkedin.com/in/carlos-lopez-martinez/" target="_blank"
-                rel="noreferrer">
-                <img alt="icono linkedin" class="contact-icon" src="./assets/linkedin.svg"></a>
-            <a class="toolbar-item" href="https://github.com/CharlieGnomo" target="_blank" rel="noreferrer">
-                <img alt="icono github" class="contact-icon" src="./assets/github.svg"></a>
-            <a class="toolbar-item" href="https://gitlab.com/CharlieGnomo" target="_blank" rel="noreferrer">
-                <img alt="icono gitlab" class="contact-icon" src="./assets/gitlab.svg"></a>
-        </div>
-        <div class="name">
-            <h1>Carlos López Martínez</h1>
-        </div>
-        <div class="profile"></div>
-        <div class="resume">
-            <a href="./assets/doc/cv_carlos_lopez_martinez_es.pdf" download>
-                Descargar resumen
-                <svg alt="icono resumen-cv" class="resume-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                    xml:space="preserve">
-                    <g>
-                        <g>
-                            <path d="M61.069,169.93C59.21,168.069,56.63,167,54,167s-5.209,1.07-7.07,2.93C45.069,171.79,44,174.37,44,177
-                       s1.069,5.21,2.93,7.069C48.79,185.93,51.37,187,54,187s5.21-1.07,7.069-2.931C62.93,182.21,64,179.63,64,177
-                       S62.93,171.79,61.069,169.93z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M438,0H235.667c-5.522,0-10,4.478-10,10s4.478,10,10,10H438c5.514,0,10,4.486,10,10v452c0,5.514-4.486,10-10,10H74
-                       c-5.514,0-10-4.486-10-10V214.333c0-5.522-4.478-10-10-10s-10,4.478-10,10V482c0,16.542,13.458,30,30,30h364
-                       c16.542,0,30-13.458,30-30V30C468,13.458,454.542,0,438,0z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M256,40c-6.804,0-13.642,0.52-20.324,1.544c-5.459,0.838-9.206,5.941-8.369,11.4c0.837,5.459,5.943,9.201,11.4,8.369
-                       C244.39,60.441,250.208,60,256,60c62.309,0,113.001,50.692,113.001,113.001c0,27.67-10.002,53.043-26.574,72.71
-                       c-7.333-12.61-17.349-23.487-29.506-31.924c-7.095-4.924-14.718-8.854-22.698-11.763c9.108-8.903,14.777-21.31,14.777-35.022
-                       v-9.75c0-27.02-21.981-49.001-49-49.001c-27.019,0-49,21.981-49,49.001v9.75c0,13.712,5.668,26.119,14.777,35.022
-                       c-7.979,2.909-15.602,6.839-22.698,11.763c-12.215,8.478-22.271,19.416-29.613,32.102c-12.627-15.005-21.453-33.461-24.906-54.05
-                       c-0.913-5.445-6.074-9.119-11.516-8.208c-5.447,0.913-9.122,6.069-8.209,11.516c5.142,30.66,21.059,58.724,44.82,79.021
-                       c24.031,20.529,54.696,31.835,86.344,31.835c73.337,0,133.001-59.664,133.001-133.001S329.337,40,256,40z M227,157.251
-                       c0-15.991,13.01-29.001,29-29.001s29,13.01,29,29.001v9.75c0,15.99-13.01,29-29,29s-29-13.01-29-29V157.251z M256,286.002
-                       c-27.074,0-52.104-9.454-71.694-25.482c13.428-27.252,40.879-44.519,71.694-44.519c30.751,0,58.15,17.196,71.608,44.349
-                       C308.101,276.371,283.154,286.002,256,286.002z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M348.357,398.002h-142c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h142c5.523,0,10-4.478,10-10
-                       C358.357,402.48,353.879,398.002,348.357,398.002z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M170.71,344.93c-1.86-1.861-4.44-2.93-7.07-2.93s-5.21,1.07-7.07,2.93s-2.93,4.44-2.93,7.07
-                       c0,2.639,1.071,5.21,2.93,7.069c1.86,1.861,4.44,2.931,7.07,2.931s5.21-1.07,7.07-2.931c1.87-1.859,2.93-4.439,2.93-7.069
-                       S172.58,346.79,170.71,344.93z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M170.71,400.93c-1.86-1.861-4.43-2.93-7.07-2.93c-2.63,0-5.21,1.07-7.07,2.93s-2.93,4.44-2.93,7.07
-                       c0,2.639,1.071,5.21,2.93,7.069c1.86,1.861,4.44,2.931,7.07,2.931s5.21-1.07,7.07-2.931c1.87-1.859,2.93-4.429,2.93-7.069
-                       C173.64,405.37,172.58,402.79,170.71,400.93z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M348.357,342.002h-142c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h142c5.523,0,10-4.478,10-10
-                       C358.357,346.48,353.879,342.002,348.357,342.002z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M161.626,57.629c-3.907-3.904-10.237-3.904-14.143,0l-32.566,32.566l-11.129-11.129c-3.907-3.904-10.237-3.904-14.143,0
-                       c-3.905,3.906-3.905,10.238,0,14.143l18.2,18.2c1.953,1.952,4.511,2.929,7.071,2.929s5.118-0.977,7.072-2.928l39.638-39.638
-                       C165.531,67.866,165.531,61.534,161.626,57.629z" />
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M126,0C80.785,0,44,36.785,44,82c0,45.215,36.785,82,82,82c45.215,0,82-36.785,82-82C208,36.785,171.215,0,126,0z
-                        M126,144c-34.187,0-62-27.813-62-62s27.813-62,62-62s62,27.813,62,62S160.187,144,126,144z" />
-                        </g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                </svg>
-            </a>
-        </div>
-    </div>
-    <div class="content">
-        <div class="container">
-            <div class="menu">
-                <a class="toolbar-item" href="mailto:carlomaroficial@gmail.com">
-                    <img alt="icono email" class="contact-icon" src="./assets/email.svg"></a>
-                <a class="toolbar-item" href="tel:+34655887216">
-                    <img alt="icono telefono" class="contact-icon" src="./assets/phone.svg"></a>
-                <a class="toolbar-item" href="https://www.linkedin.com/in/carlos-lopez-martinez/" target="_blank"
-                    rel="noreferrer">
-                    <img alt="icono linkedin" class="contact-icon" src="./assets/linkedin.svg"></a>
-                <a class="toolbar-item" href="https://github.com/CharlieGnomo" target="_blank" rel="noreferrer">
-                    <img alt="icono github" class="contact-icon" src="./assets/github.svg"></a>
-                <a class="toolbar-item" href="https://gitlab.com/CharlieGnomo" target="_blank" rel="noreferrer">
-                    <img alt="icono gitlab" class="contact-icon" src="./assets/gitlab.svg"></a>
-                <a class="toolbar-item" href="./assets/doc/cv_carlos_lopez_martinez_es.pdf" download>
-                    <svg alt="icono resumen-cv" class="contact-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                        xml:space="preserve">
-                        <g>
-                            <g>
-                                <path d="M61.069,169.93C59.21,168.069,56.63,167,54,167s-5.209,1.07-7.07,2.93C45.069,171.79,44,174.37,44,177
-                               s1.069,5.21,2.93,7.069C48.79,185.93,51.37,187,54,187s5.21-1.07,7.069-2.931C62.93,182.21,64,179.63,64,177
-                               S62.93,171.79,61.069,169.93z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M438,0H235.667c-5.522,0-10,4.478-10,10s4.478,10,10,10H438c5.514,0,10,4.486,10,10v452c0,5.514-4.486,10-10,10H74
-                               c-5.514,0-10-4.486-10-10V214.333c0-5.522-4.478-10-10-10s-10,4.478-10,10V482c0,16.542,13.458,30,30,30h364
-                               c16.542,0,30-13.458,30-30V30C468,13.458,454.542,0,438,0z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M256,40c-6.804,0-13.642,0.52-20.324,1.544c-5.459,0.838-9.206,5.941-8.369,11.4c0.837,5.459,5.943,9.201,11.4,8.369
-                               C244.39,60.441,250.208,60,256,60c62.309,0,113.001,50.692,113.001,113.001c0,27.67-10.002,53.043-26.574,72.71
-                               c-7.333-12.61-17.349-23.487-29.506-31.924c-7.095-4.924-14.718-8.854-22.698-11.763c9.108-8.903,14.777-21.31,14.777-35.022
-                               v-9.75c0-27.02-21.981-49.001-49-49.001c-27.019,0-49,21.981-49,49.001v9.75c0,13.712,5.668,26.119,14.777,35.022
-                               c-7.979,2.909-15.602,6.839-22.698,11.763c-12.215,8.478-22.271,19.416-29.613,32.102c-12.627-15.005-21.453-33.461-24.906-54.05
-                               c-0.913-5.445-6.074-9.119-11.516-8.208c-5.447,0.913-9.122,6.069-8.209,11.516c5.142,30.66,21.059,58.724,44.82,79.021
-                               c24.031,20.529,54.696,31.835,86.344,31.835c73.337,0,133.001-59.664,133.001-133.001S329.337,40,256,40z M227,157.251
-                               c0-15.991,13.01-29.001,29-29.001s29,13.01,29,29.001v9.75c0,15.99-13.01,29-29,29s-29-13.01-29-29V157.251z M256,286.002
-                               c-27.074,0-52.104-9.454-71.694-25.482c13.428-27.252,40.879-44.519,71.694-44.519c30.751,0,58.15,17.196,71.608,44.349
-                               C308.101,276.371,283.154,286.002,256,286.002z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M348.357,398.002h-142c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h142c5.523,0,10-4.478,10-10
-                               C358.357,402.48,353.879,398.002,348.357,398.002z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M170.71,344.93c-1.86-1.861-4.44-2.93-7.07-2.93s-5.21,1.07-7.07,2.93s-2.93,4.44-2.93,7.07
-                               c0,2.639,1.071,5.21,2.93,7.069c1.86,1.861,4.44,2.931,7.07,2.931s5.21-1.07,7.07-2.931c1.87-1.859,2.93-4.439,2.93-7.069
-                               S172.58,346.79,170.71,344.93z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M170.71,400.93c-1.86-1.861-4.43-2.93-7.07-2.93c-2.63,0-5.21,1.07-7.07,2.93s-2.93,4.44-2.93,7.07
-                               c0,2.639,1.071,5.21,2.93,7.069c1.86,1.861,4.44,2.931,7.07,2.931s5.21-1.07,7.07-2.931c1.87-1.859,2.93-4.429,2.93-7.069
-                               C173.64,405.37,172.58,402.79,170.71,400.93z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M348.357,342.002h-142c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h142c5.523,0,10-4.478,10-10
-                               C358.357,346.48,353.879,342.002,348.357,342.002z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M161.626,57.629c-3.907-3.904-10.237-3.904-14.143,0l-32.566,32.566l-11.129-11.129c-3.907-3.904-10.237-3.904-14.143,0
-                               c-3.905,3.906-3.905,10.238,0,14.143l18.2,18.2c1.953,1.952,4.511,2.929,7.071,2.929s5.118-0.977,7.072-2.928l39.638-39.638
-                               C165.531,67.866,165.531,61.534,161.626,57.629z" />
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M126,0C80.785,0,44,36.785,44,82c0,45.215,36.785,82,82,82c45.215,0,82-36.785,82-82C208,36.785,171.215,0,126,0z
-                                M126,144c-34.187,0-62-27.813-62-62s27.813-62,62-62s62,27.813,62,62S160.187,144,126,144z" />
-                            </g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                    </svg>
-                </a>
-            </div>
-            <div clas="main">
-                <div id="resume" class="section">
-                    <h2 class="section-title">¿Quién soy?</h2>
-                    <div class="section-content center-text">Me llamo <em>Carlos</em> y soy <em>Full-Stack
-                            developer</em> con varios años de
-                        experiencia en el sector. Aunque especializado más en front-end siempre me ha gustado las
-                        entrañas de lo que hay detrás de las aplicaciones, por ello en la actualidad estoy intentando
-                        adentrarme en el mundo del BigData y sus arquitecturas. He trabajado en proyectos para grandes
-                        empresas solo y en equipo lo cual me ha permitido enfrentarme a distintos retos que me
-                        han hecho el profesional que soy a día de hoy.</div>
-                </div>
-                <div id="work" class="section">
-                    <h2 class="section-title">¿Cómo he llegado hasta aquí?</h2>
-                    <div class="section-content flow-content">
-                        <img alt="flujo laboral" class="flow" src="./assets/flow.png">
-                    </div>
-                </div>
-                <div id="skills" class="section">
-                    <h2 class="section-title">¿Qué habilidades tengo?</h2>
-                    <div class="section-content">
-                        <div class="grid">
-                            <div class="grid-cell">
-                                <p class="emphasys skill-title">Lenguajes</p>
-                                <ul class="ranking">
-                                    <li class="rating">
-                                        <span class="skill">JavaScript</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">TypeScript</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Java</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Python</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">C++</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">C</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="grid-cell">
-                                <p class="emphasys skill-title">Frameworks y entornos</p>
-                                <ul class="ranking">
-                                    <li class="rating">
-                                        <span class="skill">Angular 2+</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Ionic</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">ReactJs</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">VueJs</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Spring Boot</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">NodeJs</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Express</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Cordova</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Django</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="grid-cell">
-                                <p class="emphasys skill-title">Bases de Datos</p>
-                                <ul class="ranking">
-                                    <li class="rating">
-                                        <span class="skill">MySQL</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">PostgreSQL</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">MongoDB</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Neo4J</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="grid-cell">
-                                <p class="emphasys skill-title">Control de Versiones</p>
-                                <ul class="ranking">
-                                    <li class="rating">
-                                        <span class="skill">Git</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">SubVersion</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="grid-cell">
-                                <p class="emphasys skill-title">Nubes</p>
-                                <ul class="ranking">
-                                    <li class="rating">
-                                        <span class="skill">Azure</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">AWS</span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="grid-cell">
-                                <p class="emphasys skill-title">Otras habilidades</p>
-                                <ul class="ranking">
-                                    <li class="rating">
-                                        <span class="skill">Kanban</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Scrum</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">Jira</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">SonarQube</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot half"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                    <li class="rating">
-                                        <span class="skill">StoryBook</span>
-                                        <span class="dot full"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                        <span class="dot empty"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="courses" class="section">
-                    <h2 class="section-title">¿Qué cursos he hecho?</h2>
-                    <div class="section-content">
-                        <p class="certificate"><img alt="icono certificado" class="certificate-icon" src="./assets/certificate.svg">Desarrollo
-                            de Apps Móviles | Google Actívate</p>
-                        <p class="certificate"><img alt="icono certificado" class="certificate-icon" src="./assets/certificate.svg">Diseño y
-                            Desarrollo Web Adaptativo en HTML 5 y CSS3 | CICE</p>
-                        <p class="certificate"><img alt="icono certificado" class="certificate-icon" src="./assets/certificate.svg">Descubriendo
-                            nuevas bibliotecas: React | CLEFormación</p>
-                        <p class="certificate"><img alt="icono certificado" class="certificate-icon" src="./assets/certificate.svg">Django
-                            | CLEFormación</p>
-                        <p class="certificate"><img alt="icono certificado" class="certificate-icon" src="./assets/certificate.svg">DEVO
-                            End-User | DEVO</p>
-                        <p class="certificate"><img alt="icono certificado" class="certificate-icon" src="./assets/certificate.svg">DEVO
-                            Advanced-User | DEVO</p>
-                    </div>
-                </div>
-                <div id="languages" class="section">
-                    <h2 class="section-title">¿Qué idiomas entiendo?</h2>
-                    <div class="section-content">
-                        <ul class="ranking">
-                            <li class="rating"><img alt="icono bandera-es" class="flag" src="./assets/321260.svg"> <span
-                                    class="dot full"></span> <span class="dot full"></span> <span
-                                    class="dot full"></span> <span class="dot full"></span> <span
-                                    class="dot full"></span> Nativo</li>
-                            <li class="rating"><img alt="icono bandera-uk" class="flag" src="./assets/321269.svg"> <span
-                                    class="dot full"></span> <span class="dot full"></span> <span
-                                    class="dot half"></span> <span class="dot empty"></span> <span
-                                    class="dot empty"></span> B2.1</li>
-                            <li class="rating"><img alt="icono bandera-fr" class="flag" src="./assets/321230.svg"> <span
-                                    class="dot full"></span> <span class="dot empty"></span> <span
-                                    class="dot empty"></span> <span class="dot empty"></span> <span
-                                    class="dot empty"></span> Básico</li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="projects" class="section">
-                    <h2 class="section-title">¿Qué proyectos he realizado?</h2>
-                    <div class="section-content">
-                        <div class="section-project">
-                            <h3 class="section-project-title">Coral Almayrit (Web)</h3>
-                            <div class="tags">
-                                <span class="badge">Drupal</span>
-                                <span class="badge">HTML</span>
-                                <span class="badge">CSS</span>
-                                <span class="badge">PHP</span>
-                            </div>
-                            <p class="collaborators">Voluntariado sin ánimo de lucro</p>
-                            <p>Transformación y posterior modernización de la anterior web estática.</p>
-                            <a class="emphasys section-project-appendix" href="https://www.coralalmayrit.com/home"
-                                target="_blank" rel="noreferrer">¿Quieres echarle un vistazo?</a>
-                        </div>
-                        <hr>
-                        <div class="section-project">
-                            <h3 class="section-project-title">GenLab (TFG)</h3>
-                            <div class="tags">
-                                <span class="badge">Cordova</span>
-                                <span class="badge">HTML</span>
-                                <span class="badge">CSS</span>
-                                <span class="badge">Cordova</span>
-                                <span class="badge">JavaScript</span>
-                                <span class="badge">Spring Boot</span>
-                                <span class="badge">JPA</span>
-                                <span class="badge">Java</span>
-                                <span class="badge">Thymeleaf</span>
-                                <span class="badge">MySQL</span>
-                            </div>
-                            <p class="collaborators">Realizado junto a Pablo Arranz Ropero y Juan Alberto Camino Sáez
-                            </p>
-                            <p>Consistió en realizar tanto una aplicación cliente como una aplicación servidora que
-                                permitiese a la Facultad de Biología de la Universidad Complutense de Madrid disponer de
-                                un sistema válido para la realización de ejercicios y consulta de teoría de genética por
-                                parte de
-                                los alumnos de dicha facultad. Además permitía la administración del contenido por
-                                parte del profesorado.</p>
-                            <a class="emphasys section-project-appendix" href="https://eprints.ucm.es/48860/1/064.pdf"
-                                target="_blank" rel="noreferrer">Enlace a la memoria</a>
-                            <a class="emphasys section-project-appendix"
-                                href="https://github.com/CharlieGnomo/GenLabClient" target="_blank" rel="noreferrer">Ver
-                                en Gitlab -
-                                Cliente</a>
-                            <a class="emphasys section-project-appendix" href="https://github.com/CharlieGnomo/GenLab"
-                                target="_blank" rel="noreferrer">Ver en Gitlab - Servidor y Administración</a>
-                        </div>
-                        <hr>
-                        <div class="section-project">
-                            <h3 class="section-project-title">PokerTrainer</h3>
-                            <div class="tags"><span class="badge">Java</span></div>
-                            <p class="collaborators">Realizado junto a Aarón Durán Sánchez, Mateo García Fuentes y
-                                Javier López De Lerma</p>
-                            <p>Proyecto elaborado para la asignatura de Herramientas Informáticas para los Juegos de
-                                Azar y que consistió en la elaboración de un sistema de simulación para partidas de
-                                Poker. Esta simulación permite testear bots elaborados por nosotros mismos y ver su
-                                comportamiento en una mesa.</p>
-                            <div class="gallery section-project-appendix">
-                                <h4 class="emphasys">Capturas</h4>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/pokertrainer/1.png">
-                                    <img alt="screenshot pokertrainer-1" class="screenshot" src="./assets/projects/pokertrainer/1.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/pokertrainer/2.png">
-                                    <img alt="screenshot pokertrainer-2" class="screenshot" src="./assets/projects/pokertrainer/2.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/pokertrainer/3.png">
-                                    <img alt="screenshot pokertrainer-3" class="screenshot" src="./assets/projects/pokertrainer/3.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/pokertrainer/4.png">
-                                    <img alt="screenshot pokertrainer-4" class="screenshot" src="./assets/projects/pokertrainer/4.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/pokertrainer/5.png">
-                                    <img alt="screenshot pokertrainer-5" class="screenshot" src="./assets/projects/pokertrainer/5.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/pokertrainer/6.png">
-                                    <img alt="screenshot pokertrainer-6" class="screenshot" src="./assets/projects/pokertrainer/6.png">
-                                </a>
-                            </div>
-                            <a class="emphasys section-project-appendix"
-                                href="https://github.com/CharlieGnomo/PokerTrainer" target="_blank" rel="noreferrer">Ver
-                                en Gitlab</a>
-                        </div>
-                        <hr>
-                        <div class="section-project">
-                            <h3 class="section-project-title">Orbit</h3>
-                            <div class="tags"><span class="badge">Quintus</span> <span class="badge">JavaScript</span>
-                            </div>
-                            <p class="collaborators">Realizado junto a Enrique Ituarte Martínez-Millán y Javier López De
-                                Lerma</p>
-                            <p>Proyecto elaborado para la asignatura de Desarrollo de Videojuegos y que consistió en la
-                                elaboración de un videojuego basado en físicas gravitacionales.</p>
-                            <div class="gallery section-project-appendix">
-                                <h4 class="emphasys">Capturas</h4>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/1.png">
-                                    <img alt="screenshot orbit-1" class="screenshot" src="./assets/projects/orbit/1.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/2.png">
-                                    <img alt="screenshot orbit-2" class="screenshot" src="./assets/projects/orbit/2.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/3.png">
-                                    <img alt="screenshot orbit-3" class="screenshot" src="./assets/projects/orbit/3.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/4.png">
-                                    <img alt="screenshot orbit-4" class="screenshot" src="./assets/projects/orbit/4.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/5.png">
-                                    <img alt="screenshot orbit-5" class="screenshot" src="./assets/projects/orbit/5.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/6.png">
-                                    <img alt="screenshot orbit-6" class="screenshot" src="./assets/projects/orbit/6.png">
-                                </a>
-                                <a target="_blank" rel="noreferrer" href="./assets/projects/orbit/7.png">
-                                    <img alt="screenshot orbit-7" class="screenshot" src="./assets/projects/orbit/7.png">
-                                </a>
-                            </div>
-                            <a class="emphasys section-project-appendix" href="https://github.com/CharlieGnomo/Orbit"
-                                target="_blank" rel="noreferrer">Ver en Gitlab</a>
-                            <a class="emphasys section-project-appendix" href="https://spaceorbit.github.io"
-                                target="_blank" rel="noreferrer">¿Quieres jugar?</a>
-                        </div>
-                    </div>
-                </div>
-                <div id="other" class="section">
-                    <h2 class="section-title">¿Quieres conocerme más?</h2>
-                    <div class="section-content">
-                        <p class="hobbie">
-                            <img alt="icono hobbie-musica" class="hobbie-icon" src="./assets/2907197.svg">
-                            Enamorado de la música. Integrante y actual presidente de la Coral Almayrit donde adoro
-                            cantar junto a mis
-                            compañeros. Tengo el grado elemental de piano obtenido en la academia Musical Silvela
-                            adscrita al Conservatorio Profesional de Música Amaniel.
-                        </p>
-                        <p class="hobbie">
-                            <img alt="icono hobbie-futbol" class="hobbie-icon" src="./assets/1165187.svg">
-                            Amante del fútbol desde pequeñito, el cual intento practicar asiduamente.
-                        </p>
-                        <p class="hobbie">
-                            <img alt="icono hobbie-historia" class="hobbie-icon" src="./assets/2667362.svg">
-                            Adoro el arte y la historia.
-                        </p>
-                        <p class="hobbie">
-                            <img alt="icono hobbie-cocina" class="hobbie-icon" src="./assets/2971358.svg">
-                            Soy un poco cocinillas.
-                        </p>
-                    </div>
-                </div>
-                <div id="contact" class="section">
-                    <h2 class="section-title">¿Cómo puedes contactar conmigo?</h2>
-                    <div class="section-content">
-                        <p class="contact">
-                            <a class="emphasys" href="mailto:carlomaroficial@gmail.com">
-                                <img alt="icono email" class="contact-icon" src="./assets/email.svg">carlomaroficial@gmail.com</a>
-                        </p>
-                        <p class="contact">
-                            <a class="emphasys" href="tel:+34655887216">
-                                <img alt="icono telefono" class="contact-icon" src="./assets/phone.svg">655 88 72 16
-                            </a>
-                        </p>
-                        <p class="contact">
-                            <a class="emphasys" href="https://www.linkedin.com/in/carlos-lopez-martinez/"
-                                target="_blank" rel="noreferrer">
-                                <img alt="icono linkedin" class="contact-icon" src="./assets/linkedin.svg">Linkedin
-                            </a>
 
-                        </p>
-                        <!-- <p class="contact"><a class="emphasys" href="https://www.linkedin.com/in/carlos-lopez-martinez">
-                                <img class="contact-icon" src="./assets/infojobs.svg">InfoJobs</a>
-                        </p> -->
-                    </div>
-                </div>
-            </div>
+<!-- ── Language switcher ───────────────────────────── -->
+<div class="lang-switcher">
+  <button class="lang-btn active" id="btn-es" onclick="setLang('es')" alt="ES">ES</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')" alt="GB">EN</button>
+</div>
+
+<div class="layout">
+
+  <!-- ═══════════════ SIDEBAR ═══════════════════════ -->
+  <aside class="sidebar">
+
+    <div>
+      <div class="avatar"><img src="./assets/profile.jpg" alt="Carlos López Martínez" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div style="margin-top:16px">
+        <div class="sidebar-name">Carlos López Martínez</div>
+        <div class="sidebar-title"
+          data-es="Arquitecto de Datos · Ingeniería de Datos"
+          data-en="Data Architect · Data Engineering">Arquitecto de Datos · Ingeniería de Datos</div>
+        <div class="sidebar-location">📍 Madrid, España</div>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="s-label" data-es="Contacto" data-en="Contact">Contacto</div>
+      <ul class="contact-list">
+        <li><span class="c-icon">✉</span><a href="mailto:carlomaroficial@gmail.com">carlomaroficial@gmail.com</a></li>
+        <li><span class="c-icon">in</span><a href="https://www.linkedin.com/in/carlos-lopezmartinez" target="_blank">linkedin.com/in/carlos-lopezmartinez</a></li>
+        <li><span class="c-icon">🌐</span><a href="https://charliegnomo.github.io" target="_blank">charliegnomo.github.io</a></li>
+        <li><span class="c-icon">⌥</span><a href="https://github.com/CharlieGnomo" target="_blank">github.com/CharlieGnomo</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="s-label" data-es="Áreas de enfoque" data-en="Focus Areas">Áreas de enfoque</div>
+      <div class="chip-grid">
+        <span class="chip" data-es="Arquitectura de Datos" data-en="Data Architecture">Arquitectura de Datos</span>
+        <span class="chip" data-es="Ingeniería de datos" data-en="Data Engineering">Ingeniería de datos</span>
+        <span class="chip" data-es="Liderazgo de equipo" data-en="Team Leading">Liderazgo de equipo</span>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="s-label" data-es="Certificaciones" data-en="Certifications">Certificaciones</div>
+      <ul class="cert-list">
+        <li>Azure Data Engineer Associate</li>
+        <li>Databricks Certified Data Engineer Associate</li>
+        <li>Scrum Fundamentals Certified</li>
+        <li>Azure Fundamentals</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="s-label" data-es="Idiomas" data-en="Languages">Idiomas</div>
+      <ul class="lang-list">
+        <li class="lang-item">
+          <span class="lang-name" data-es="Español" data-en="Spanish">Español</span>
+          <span class="lang-level" data-es="Nativo" data-en="Native">Nativo</span>
+        </li>
+        <li class="lang-item">
+          <span class="lang-name" data-es="Inglés" data-en="English">Inglés</span>
+          <span class="lang-level">B2</span>
+        </li>
+        <li class="lang-item">
+          <span class="lang-name" data-es="Francés" data-en="French">Francés</span>
+          <span class="lang-level" data-es="Elemental" data-en="Elementary">Elemental</span>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- ═══════════════ MAIN ══════════════════════════ -->
+  <main class="main">
+
+    <!-- ── Hero / Perfil ───────────────────────────── -->
+     
+    <section class="section reveal">
+      <div class="hero-card">
+        <div class="hero-headline"
+          data-es="Diseño plataformas y procesos de datos<br>que <em>escalan con el negocio</em><br>"
+          data-en="I design data platforms and processes<br>that <em>scale with the business</em><br>">
+          Diseño plataformas y procesos de datos<br>que <em>escalan con el negocio</em><br>
         </div>
+        <div class="hero-sub"
+          data-es="Data Architect · 8+ años de experiencia · Azure &amp; Databricks Certified · Liderazgo de equipo"
+          data-en="Data Architect · 8+ years of experience · Azure &amp; Databricks Certified · Team Leadership">
+          Data Architect · 8+ años de experiencia · Azure &amp; Databricks Certified · Liderazgo de equipo
+        </div>
+        <div class="hero-body">
+          <p data-es="Ingeniero Informático con trayectoria progresiva desde el desarrollo Full‑Stack hasta la Arquitectura de Datos y el Liderazgo de equipo. Actualmente dirijo un equipo, coordino con otros equipos y tomo decisiones de diseño sobre procesos y plataformas."
+             data-en="Computer Science Engineer with a progressive career path from Full‑Stack development to Data Architecture and Team Leadership. Currently leading a team, coordinating across teams and making design decisions on processes and platforms.">
+            Ingeniero Informático con trayectoria progresiva desde el desarrollo Full‑Stack hasta la Arquitectura de Datos y el Liderazgo de equipo. Actualmente dirijo un equipo, coordino con otros equipos y tomo decisiones de diseño sobre procesos y plataformas.
+          </p>
+          <p data-es="Mi experiencia abarca desde la implementación técnica hasta la definición de arquitectura y la coordinación con negocio. Intento que las decisiones técnicas sean comprensibles para todos los implicados y que las soluciones resulten mantenibles a largo plazo." data-en="My experience spans implementation, architecture definition and collaboration with business stakeholders. I aim to make technical decisions understandable to everyone involved and keep solutions maintainable over time."> Mi experiencia abarca desde la implementación técnica hasta la definición de arquitectura y la coordinación con negocio. Intento que las decisiones técnicas sean comprensibles para todos los implicados y que las soluciones resulten mantenibles a largo plazo. </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Métricas ─────────────────────────────────── -->
+    <div class="metrics-grid reveal">
+      <div class="metric">
+        <div class="metric-value metric-accent">8+</div>
+        <div class="metric-label" data-es="Años de experiencia" data-en="Years of experience">Años de experiencia</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">5</div>
+        <div class="metric-label" data-es="Sectores Estratégicos&#10;Industria · Energía · Finanzas · Legal · Seguros " data-en="Strategic Sectors&#10;Industry · Energy · Finance · Legal · Insurance ">Sectores estratégicos&#10;Industria · Energía · Finanzas · Legal · Seguros </div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">10+</div>
+        <div class="metric-label" data-es="Proyectos" data-en="Projects">Proyectos</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" style="font-size:1rem;padding-top:6px">Azure</div>
+        <div class="metric-label">+ Databricks Certified</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" style="font-size:1rem;padding-top:6px">UCM</div>
+        <div class="metric-label" data-es="Grado en Ingeniería Informática" data-en="BCs Degree in Computer Science Engineering">Ing. Informática</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" style="font-size:1rem;padding-top:6px">Sports Data Campus</div>
+        <div class="metric-label" data-es="Máster BigData Deportivo" data-en="MSc Sports BigData">Máster BigData Deportivo</div>
+      </div>
     </div>
-    <div class="footer">
-        Carlos López Martínez
-    </div>
+
+    <!-- ── 01 Experiencia Estratégica ──────────────── -->
+    <section class="section reveal">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title" data-es="Experiencia Estratégica" data-en="Strategic Experience">Experiencia Estratégica</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="domain-grid">
+        <div class="domain-card">
+          <div class="domain-name" data-es="Espacios de Datos" data-en="Data Spaces">Espacios de Datos</div>
+          <div class="domain-desc"
+            data-es="Iniciativas de interoperabilidad, compartición segura de datos, gobernanza y ecosistemas federados. CRED · SEDIA."
+            data-en="Interoperability initiatives, secure data sharing, governance, and federated data ecosystems. CRED · SEDIA">
+            Iniciativas de interoperabilidad, compartición segura de datos, gobernanza y ecosistemas federados. CRED · SEDIA.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name">Energía &amp; Trading de Commodities</div>
+          <div class="domain-desc"
+            data-es="Diseño e implementación de procesos ELT y datasets estratégicos para operaciones de trading energético. Repsol · Naturgy."
+            data-en="Design and implementation of ELT processes and strategic datasets supporting energy trading operations. Repsol · Naturgy.">
+            Diseño e implementación de procesos ELT y datasets estratégicos para operaciones de trading energético. Repsol · Naturgy.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name" data-es="Servicios Financieros" data-en="Financial Services">Servicios Financieros</div>
+          <div class="domain-desc"
+            data-es="Iniciativas analíticas a gran escala para detección de fraude y procesos bancarios críticos. BBVA · Banco Santander."
+            data-en="Large-scale analytics initiatives for fraud detection and critical banking processes. BBVA · Banco Santander.">
+            Iniciativas analíticas a gran escala para detección de fraude y procesos bancarios críticos. BBVA · Banco Santander.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name" data-es="Aplicaciones Empresariales" data-en="Enterprise Applications">Aplicaciones Empresariales</div>
+          <div class="domain-desc"
+            data-es="Soluciones digitales críticas para industria, seguros y servicios profesionales. Gestamp · Mapfre · Red Abogacía."
+            data-en="Critical digital solutions for industry, insurance, and professional services. Gestamp · Mapfre · Red Abogacía.">
+            Soluciones digitales críticas para industria, seguros y servicios profesionales. Gestamp · Mapfre · Red Abogacía.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name" data-es="Data Warehousing y Analítica de datos" data-en="Data Warehousing &amp; Data Analytics">Data Warehousing y Analítica de datos</div>
+          <div class="domain-desc"
+            data-es="Diseño de modelos analíticos, procesos ETL/ELT y plataformas de datos orientadas a negocio. Repsol · Naturgy."
+            data-en="Design of analytics models, ETL/ELT processes, and business-oriented data platforms. Repsol · Naturgy.">
+            Diseño de modelos analíticos, procesos ETL/ELT y plataformas de datos orientadas a negocio. Repsol · Naturgy.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name" data-es="Traducción del negocio" data-en="Data Translator">Data Translator</div>
+          <div class="domain-desc"
+            data-es="Puente entre necesidades de negocio e implementación técnica mediante soluciones de datos escalables."
+            data-en="Bridge between business needs and technical implementation through scalable data solutions.">
+            Puente entre necesidades de negocio e implementación técnica mediante soluciones de datos escalables.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 Trayectoria / Career ──────────────────── -->
+    <section class="section reveal">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title" data-es="Trayectoria Profesional" data-en="Professional Experience">Trayectoria Profesional</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Tinámica -->
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-year">2022<br><span data-es="Hoy" data-en="Now">Hoy</span></div>
+            <div class="tl-company">Tinámica</div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-role"
+              data-es="Arquitecto de Datos · Ingeniero de datos"
+              data-en="Data Architect · Data Engineer">
+              Arquitecto de Datos · Ingeniero de datos
+            </div>
+            <div class="tl-meta"
+              data-es="Tinámica · jun. 2022 — Presente · Madrid"
+              data-en="Tinámica · Jun. 2022 — Present · Madrid">
+              Tinámica · jun. 2022 — Presente · Madrid
+            </div>
+            <ul class="tl-list">
+              <li data-es="Lidero un equipo directo, estableciendo prioridades técnicas, revisando arquitecturas y garantizando la calidad de entrega."
+                  data-en="Lead a direct team, setting technical priorities, reviewing architectures, and ensuring delivery quality.">
+                Lidero un equipo directo, estableciendo prioridades técnicas, revisando arquitecturas y garantizando la calidad de entrega.
+              </li>
+              <li data-es="Coordino con otros equipos de producto y negocio para traducir requisitos funcionales en decisiones de diseño sobre plataformas."
+                  data-en="Coordinate with product and business teams to translate functional requirements into design decisions on platforms.">
+                Coordino con otros equipos de producto y negocio para traducir requisitos funcionales en decisiones de diseño sobre plataformas.
+              </li>
+              <li data-es="Actualmente estoy inmerso en iniciativas de Espacio de Datos, articulando soluciones de interoperabilidad y compartición segura de datos entre organizaciones."
+                  data-en="I am currently working on Data Spaces initiatives, focusing on interoperability solutions and secure data sharing between organizations.">
+                Actualmente estoy inmerso en iniciativas de Espacio de Datos, articulando soluciones de interoperabilidad y compartición segura de datos entre organizaciones.
+              </li>
+              <li data-es="Diseño e implementación de arquitecturas Lakehouse con patrón Medallion, definiendo estándares de ingesta, transformación y limpieza."
+                  data-en="Designed and implemented Lakehouse architectures using the Medallion pattern, defining standards for data ingestion, transformation, and cleansing.">
+                Diseño e implementación de arquitecturas Lakehouse con patrón Medallion, definiendo estándares de ingesta, transformación y limpieza.
+              </li>
+              <li data-es="He contribuido en la definición de los estándares de desarrollo y de arquitectura/ingeniería de datos de la empresa, reduciendo la deuda técnica y acelerando la incorporación de nuevos ingenieros."
+                  data-en="I have helped define the company’s development and data architecture/engineering standards, reducing technical debt and speeding up the onboarding of new engineers.">
+                He contribuido en la definición de los estándares de desarrollo y de arquitectura/ingeniería de datos de la empresa, reduciendo la deuda técnica y acelerando la incorporación de nuevos ingenieros.
+              </li>
+            </ul>
+            <div class="tl-stack">
+              <span class="tag tag-blue" data-es="Espacios de Datos" data-en="Data Spaces">Data Spaces</span>
+              <span class="tag tag-blue">Azure Databricks · Azure Data Factory · Azure Synapse · Azure Functions</span>
+              <span class="tag tag-blue">Lakehouse · Medallion</span>
+              <span class="tag tag-blue">Azure SQL · SQL Server</span>
+              <span class="tag tag-blue">PySpark</span>
+              <span class="tag tag-blue" data-es="Liderazgo de equipo" data-en="Team Leadership">Team Leadership</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Babel Big Data -->
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-year">2019<br>2022</div>
+            <div class="tl-company">Babel</div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-role"
+              data-es="Ingeniero de datos · Desarrollador full-stack"
+              data-en="Data Engineer · Full-stack developer">
+              Ingeniero de datos · Desarrollador full-stack
+            </div>
+            <div class="tl-meta"
+              data-es="Babel · oct. 2019 — jun. 2022 · Madrid"
+              data-en="Babel · Oct. 2019 — Jun. 2022 · Madrid">
+              Babel · oct. 2019 — jun. 2022 · Madrid
+            </div>
+            <ul class="tl-list">
+              <li data-es="Desarrollé soluciones analíticas full-stack para el departamento de Big Data de clientes financieros de primer nivel, con foco en detección de fraude para BBVA y análisis de procesos críticos para Banco Santander."
+                  data-en="Built full-stack analytics solutions for the Big Data department of top-tier financial clients, focused on fraud detection for BBVA and critical process analysis for Banco Santander.">
+                Desarrollé soluciones analíticas full-stack para el departamento de Big Data de clientes financieros de primer nivel, con foco en detección de fraude para BBVA y análisis de procesos críticos para Banco Santander.
+              </li>
+              <li data-es="Construí y mantuve pipelines ETL/ELT sobre Azure Synapse, Azure Data Factory, Azure Functions y Azure Data Lake, procesando volúmenes de datos a escala empresarial."
+                  data-en="Built and maintained ETL/ELT pipelines on Azure Synapse, Azure Data Factory, Azure Functions and Azure Data Lake, processing data at enterprise scale.">
+                Construí y mantuve pipelines ETL/ELT sobre Azure Synapse, Azure Data Factory, Azure Functions y Azure Data Lake, procesando volúmenes de datos a escala empresarial.
+              </li>
+              <li data-es="Implementé servicios backend con Python, Django, Spring Boot y Azure Functions, integrando fuentes heterogéneas en plataformas analíticas unificadas."
+                  data-en="Implemented backend services with Python, Django, Spring Boot, and Azure Functions, integrating heterogeneous sources into unified analytics platforms.">
+                Implementé servicios backend con Python, Django, Spring Boot y Azure Functions, integrando fuentes heterogéneas en plataformas analíticas unificadas.
+              </li>
+              <li data-es="Gestioné infraestructura cloud como código con Terraform."
+                  data-en="Managed cloud infrastructure as code with Terraform.">
+                Gestioné infraestructura cloud como código con Terraform.
+              </li>
+            </ul>
+            <div class="tl-stack">
+              <span class="tag tag-blue">Azure Synapse · Azure Functions · Azure Data Lake</span>
+              <span class="tag tag-blue">Lakehouse · Medallion</span>
+              <span class="tag tag-blue">PySpark</span>
+              <span class="tag tag-blue">Python · Django</span>
+              <span class="tag tag-blue">Java · Spring Boot</span>
+              <span class="tag tag-blue">PostgreSQL · SQL Server</span>
+              <span class="tag tag-blue">QGis · PostGis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Babel Dev -->
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-year">2018<br>2019</div>
+            <div class="tl-company">Babel</div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-role"
+              data-es="Desarrollador Full‑Stack"
+              data-en="Full‑Stack Developer">
+              Desarrollador Full‑Stack
+            </div>
+            <div class="tl-meta"
+              data-es="Babel · ago. 2018 — oct. 2019 · Madrid"
+              data-en="Babel · Aug. 2018 — Oct. 2019 · Madrid">
+              Babel · ago. 2018 — oct. 2019 · Madrid
+            </div>
+            <ul class="tl-list">
+              <li data-es="Desarrollé aplicaciones híbridas multiplataforma con Ionic 3 y plugins nativos de Cordova para clientes como Gestamp, Mapfre Salud y Red Abogacía."
+                  data-en="Developed cross-platform hybrid apps with Ionic 3 and native Cordova plugins for clients including Gestamp, Mapfre Salud, and Red Abogacía.">
+                Desarrollé aplicaciones híbridas multiplataforma con Ionic 3 y plugins nativos de Cordova para clientes como Gestamp, Mapfre Salud y Red Abogacía.
+              </li>
+              <li data-es="Implementé comunicación en tiempo real mediante Socket.io y visualización geoespacial con OpenLayers."
+                  data-en="Implemented real-time communication via Socket.io and geospatial visualization with OpenLayers.">
+                Implementé comunicación en tiempo real mediante Socket.io y visualización geoespacial con OpenLayers.
+              </li>
+            </ul>
+            <div class="tl-stack">
+              <span class="tag tag-blue">Ionic 3 · Cordova</span>
+              <span class="tag tag-blue">React · Angular 5</span>
+              <span class="tag tag-blue">NodeJS · Express</span>
+              <span class="tag tag-blue">Socket.io · OpenLayers</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Babel Intern -->
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-year">2018<br>2018</div>
+            <div class="tl-company">Babel</div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-role"
+              data-es="Becario Babelcamp"
+              data-en="Babelcamp Intern">
+              Becario Babelcamp
+            </div>
+            <div class="tl-meta"
+              data-es="Babel · feb. 2018 — ago. 2018 · Madrid"
+              data-en="Babel · Feb. 2018 — Aug. 2018 · Madrid">
+              Babel · feb. 2018 — ago. 2019 · Madrid
+            </div>
+            <ul class="tl-list">
+              <li data-es="Desarrollé junto con algunos compañeros un proyecto de un portal inmobiliario (estilo Idealista) con una visión innovadora"
+                  data-en="I developed, together with some colleagues, a real estate portal project (similar to Idealista) with an innovative approach.">
+                Desarrollé junto con algunos compañeros un proyecto de un portal inmobiliario (estilo Idealista) con una visión innovadora
+              </li>
+              <li data-es="Obtuve conocimientos en React, NodeJS y Angular 5  participando en proyectos frontend y backend en entorno profesional simulado."
+                  data-en="Gained experience with React, Node.js, and Angular 5 through frontend and backend projects in a simulated professional environment.">
+                Obtuve conocimientos en React, NodeJS y Angular 5  participando en proyectos frontend y backend en entorno profesional simulado.
+              </li>
+            </ul>
+            <div class="tl-stack">
+              <span class="tag tag-blue">Javascript · Typescript · React · Angular 5</span>
+              <span class="tag tag-blue">NodeJS · Express</span>
+              <span class="tag tag-blue">CSS · SASS</span>
+              <span class="tag tag-blue">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 03 Stack Tecnológico ─────────────────────── -->
+    <section class="section reveal">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title" data-es="Stack Tecnológico" data-en="Technology Stack">Stack Tecnológico</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="tech-table">
+        <div class="tech-row">
+          <div class="tech-cat" data-es="Azure" data-en="Azure">Azure</div>
+          <div class="tech-items">
+            <span class="tag">Databricks</span>
+            <span class="tag">Synapse</span>
+            <span class="tag">Data Factory</span>
+            <span class="tag">SQL Database</span>
+            <span class="tag">Blob Storage</span>
+            <span class="tag">Functions</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-cat" data-es="Arquitecturas" data-en="Architectures">Arquitecturas</div>
+          <div class="tech-items">
+            <span class="tag">Lakehouse · Medallion</span>
+            <span class="tag">Data Warehousing</span>
+            <span class="tag">Data Lake</span>
+            <span class="tag">ELT / ETL</span>
+            <span class="tag">Event-Driven</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-cat" data-es="Bases de Datos" data-en="Databases">Bases de Datos</div>
+          <div class="tech-items">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Azure SQL</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Fuseki</span>
+            <span class="tag">Neo4J</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-cat" data-es="Lenguajes" data-en="Languages">Lenguajes</div>
+          <div class="tech-items">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">PySpark</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Java</span>
+            <span class="tag">C++</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-cat" data-es="Ingeniería" data-en="Engineering">Frameworks</div>
+          <div class="tech-items">
+            <span class="tag">Django</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">ExpressJS</span>
+            <span class="tag">React</span>
+            <span class="tag">Angular</span>
+            <span class="tag">Ionic</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-cat" data-es="DevOps / IaC" data-en="DevOps / IaC">DevOps / IaC</div>
+          <div class="tech-items">
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Bitbucket Pipelines</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 04 Formación Académica ───────────────────── -->
+    <section class="section reveal">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title" data-es="Formación Académica" data-en="Education">Formación Académica</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="tech-table">
+        <div class="tech-row">
+          <div class="tech-cat">2021 — 2022</div>
+          <div class="tech-items" style="flex-direction:column;align-items:flex-start;gap:4px;padding:16px 20px">
+            <span style="font-weight:600;color:var(--deep);font-size:0.88rem"
+              data-es="Máster en Big Data Deportivo"
+              data-en="MSc in Sports Big Data">Máster en Big Data Deportivo</span>
+            <span style="font-size:0.8rem;color:var(--dim)">Sports Data Campus · Madrid</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-cat">2013 — 2018</div>
+          <div class="tech-items" style="flex-direction:column;align-items:flex-start;gap:4px;padding:16px 20px">
+            <span style="font-weight:600;color:var(--deep);font-size:0.88rem"
+              data-es="Grado en Ingeniería Informática — Itinerario Tecnologías de la Información"
+              data-en="BSc in Computer Science Engineering — Information Technology Track">Grado en Ingeniería Informática — Itinerario Tecnologías de la Información</span>
+            <span style="font-size:0.8rem;color:var(--dim)"
+              data-es="Facultad de Informática · Universidad Complutense de Madrid (UCM)"
+              data-en="Faculty of Computer Science · Universidad Complutense de Madrid (UCM)">Facultad de Informática · Universidad Complutense de Madrid (UCM)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 05 Otros proyectos ──────────────── -->
+    <section class="section reveal">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title" data-es="Otros proyectos" data-en="Other projects">Otros proyectos</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="domain-grid">
+        <div class="domain-card">
+          <div class="domain-name" data-es="Herramienta de explotación y análisis regresivo de puntuaciones FIFA" data-en="Tool for analyzing and performing regression analysis on FIFA ratings">Herramienta de explotación y análisis regresivo de puntuaciones FIFA</div>
+          <div class="domain-desc"
+            data-es="Desarrollo de una plataforma de explotación(PowerBi) de un modelo en estrella a partir de datos históricos de la UEFA Champions League (construidos mediante Databricks siguiendo un patrón Medallion) desde el comienzo de la competición. Además se realizó un análisis regresivo de las puntuaciones FIFA basado en el primer sistema de puntuaciones."
+            data-en="Developed a Power BI analytics platform using a star schema built on historical UEFA Champions League data in Databricks (Medallion architecture), covering the competition from its inception. Also performed a regression analysis of FIFA ratings based on the original rating system.">
+            Desarrollo de una plataforma de explotación(PowerBi) de un modelo en estrella a partir de datos históricos de la UEFA Champions League (construidos mediante Databricks siguiendo un patrón Medallion) desde el comienzo de la competición. Además se realizó un análisis regresivo de las puntuaciones FIFA basado en el primer sistema de puntuaciones.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name">PokerTrainer</div>
+          <div class="domain-desc"
+            data-es="Diseño e implementación de un sistema de simulación de Poker (en Java) basado en bots programables para poder entrenar tu juego antes de partidas reales."
+            data-en="Designed and implemented a Poker (Java) simulation system using programmable bots to allow players to train before real matches.">
+            Diseño e implementación de un sistema de simulación de Poker (en Java) basado en bots programables para poder entrenar tu juego antes de partidas reales.
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-name">Orbit</div>
+          <div class="domain-desc"
+            data-es="Videojuego desarrollado con Quintus(JS) basado en la película Interstellar con simulaciones de modelos gravitacionales cuyo objetivo final es llegar a la nave destino. Simula planos 3d en un entorno 2D."
+            data-en="Video game developed using Quintus (JS) and inspired by the movie Interstellar, featuring gravitational simulations with the goal of reaching the target spacecraft. It simulates 3D physics within a 2D environment.">
+            Videojuego desarrollado con Quintus(JS) basado en la película Interstellar con simulaciones de modelos gravitacionales cuyo objetivo final es llegar a la nave destino. Simula planos 3d en un entorno 2D.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 06 Certificaciones ───────────────────────── -->
+    <section class="section reveal">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title" data-es="Certificaciones y Formación Continua" data-en="Certifications &amp; Continuous Learning">Certificaciones y Formación Continua</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <h3 data-es="Certificaciones" data-en="Certifications">Certificaciones</h3>
+          <ul class="cert-list-main">
+            <li>Microsoft Certified: Azure Data Engineer Associate</li>
+            <li>Databricks Certified Data Engineer Associate (2025)</li>
+            <li>Microsoft Certified: Azure Fundamentals</li>
+            <li>Databricks Lakehouse Platform Accreditation</li>
+            <li>Scrum Fundamentals</li>
+          </ul>
+        </div>
+        <div class="cert-card">
+          <h3 data-es="Formación Continua - Cursos" data-en="Continuous Learning - Courses">Formación Continua - Cursos</h3>
+          <ul class="cert-list-main">
+            <li data-es="Microsoft Fabric Analytics Engineer (Azure)" data-en="Microsoft Fabric Analytics Engineer (Azure)">Microsoft Fabric Analytics Engineer (Formación DP‑600)</li>
+            <li>Databricks Performance Optimization (Databricks)</li>
+            <li>PMP &amp; CAPM Foundations (CEOLEVEL)</li>
+            <li data-es="Diseño y Desarrollo Web Adaptativo en HTML 5 y CSS3 (CICE)" data-en="Responsive Web Design and Development using HTML5 and CSS3">Diseño y Desarrollo Web Adaptativo en HTML 5 y CSS3 (CICE)</li>
+            <li data-es="Ingeniería Aumentada con IA (Anthropic)" data-en="AI‑Augmented Engineering (Anthropic)">Ingeniería Aumentada con IA (Anthropic)</li>
+            <li data-es="Comunicación Efectiva para Liderazgo Técnico (Santander Academy)" data-en="Effective Communication for Technical Leadership (Santander Academy)">Comunicación Efectiva para Liderazgo Técnico (Santander Academy)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="footer-stripe">
+  Carlos López Martínez · Madrid, España · carlomaroficial@gmail.com
+</div>
+
+<script>
+  function setLang(lang) {
+    // Update button states
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    // Update all translatable elements
+    document.querySelectorAll('[data-es][data-en]').forEach(el => {
+      const text = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+      // Use innerHTML to support <br> and <em> in hero headline
+      el.innerHTML = text;
+    });
+
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+
+    // Persist choice
+    localStorage.setItem('cv-lang', lang);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Restore saved language on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('cv-lang') || 'es';
+    setLang(saved);
+  });
+</script>
 </body>
-
 </html>
